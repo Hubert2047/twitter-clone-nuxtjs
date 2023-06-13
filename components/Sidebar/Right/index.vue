@@ -50,9 +50,15 @@ const whoToFollowItems = ref([
         <!-- Trends for you -->
         <SidebarRightPreviewCard title="Trends for you">
             <SidebarRightPreviewCardItem v-for="trend in trendsForYouItems">
-                <div class="dark:text-dark-text-100 text-xs">{{ trend.title }}</div>
-                <div class="dark:text-white mt-0.5 font-bold">{{ trend.content }}</div>
-                <div class="dark:text-dark-text-100 mt-1 text-xs">{{ trend.count }} Tweets</div>
+                <div class="dark:text-dark-text-100 text-xs">
+                    {{ trend.title }}
+                </div>
+                <div class="dark:text-white mt-0.5 font-bold">
+                    {{ trend.content }}
+                </div>
+                <div class="dark:text-dark-text-100 mt-1 text-xs">
+                    {{ trend.count }} Tweets
+                </div>
                 <div
                     class="w-8 h-8 mr-3 absolute right-0 top-1 flex items-center justify-center rounded-full hover:bg-dark-100 fill-dark-text-100 hover:fill-blue-400"
                     :class="defaultTransition"
@@ -65,15 +71,22 @@ const whoToFollowItems = ref([
         </SidebarRightPreviewCard>
         <!-- Who to follows -->
         <SidebarRightPreviewCard title="Who to follows">
-            <SidebarRightPreviewCardItem v-for="whoToFollowItem in whoToFollowItems">
+            <SidebarRightPreviewCardItem
+                v-for="whoToFollowItem in whoToFollowItems"
+            >
                 <div class="flex justify-between items-center">
                     <div class="flex items-center gap-2">
                         <div class="w-8 h-8 rounded-full overflow-hidden">
                             <img :src="whoToFollowItem.image" />
                         </div>
                         <div class="flex flex-col">
-                            <span class="dark:text-white font-semibold text-sm">{{ whoToFollowItem.name }}</span>
-                            <span class="dark:text-dark-text-100 text-sm">{{ whoToFollowItem.handle }}</span>
+                            <span
+                                class="dark:text-white font-semibold text-sm"
+                                >{{ whoToFollowItem.name }}</span
+                            >
+                            <span class="dark:text-dark-text-100 text-sm">{{
+                                whoToFollowItem.handle
+                            }}</span>
                         </div>
                     </div>
                     <div
@@ -84,5 +97,7 @@ const whoToFollowItems = ref([
                 </div>
             </SidebarRightPreviewCardItem>
         </SidebarRightPreviewCard>
+        <!-- suggest login -->
+        <!-- <SidebarRightSuggestLoginCard /> -->
     </div>
 </template>

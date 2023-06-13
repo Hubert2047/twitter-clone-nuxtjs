@@ -1,33 +1,54 @@
 <script setup>
-const headerButtons = [
-    {
-        id: 1,
-        title: 'For You',
-    },
-    {
-        id: 2,
-        title: 'Following',
-    },
-]
-const currentHeaderButtonIdActive = ref(1)
-const handleHeaderButtonClick = function (headerButton) {
-    currentHeaderButtonIdActive.value = headerButton.id
-}
+definePageMeta({
+    layout: 'login',
+})
+const { defaultTransition } = useTailwindConfig()
 </script>
 <template>
-    <div class="">
-        <!-- Title -->
-        <div class="px-4 cursor-pointer flex h-[53px] items-center">
-            <h2 class="dark:text-white font-bold text-xl p-0.5">Home</h2>
-        </div>
-        <!-- For you and Following button-->
-        <div class="flex cursor-pointer border-b border-dark-300">
-            <HomeHeaderButton
-                v-for="headerButton in headerButtons"
-                @click="handleHeaderButtonClick(headerButton)"
-                :active="currentHeaderButtonIdActive === headerButton.id"
-                :title="headerButton.title"
-            />
+    <div class="p-4 min-h-screen mx-auto max-w-[600px]">
+        <div class="p-5 flex flex-col">
+            <!-- logo icon -->
+            <div class="h-12 w-12">
+                <LogoTwitter />
+            </div>
+            <div class="my-12">
+                <span class="dark:text-white text-6xl">正發生</span>
+            </div>
+            <div class="mb-8">
+                <span class="dark:text-white text-3xl"
+                    >現在就加入 Twitter。</span
+                >
+            </div>
+            <!-- 建立帳戶 -->
+            <div>
+                <div class="flex flex-col">
+                    <div class="mb-2">
+                        <div
+                            :class="defaultTransition"
+                            class="flex items-center justify-center rounded-full dark:bg-dim-500 w-[300px] h-[40px] cursor-pointer dark:text-white dark:hover:bg-dim-500/90"
+                        >
+                            建立帳戶
+                        </div>
+                    </div>
+                    <div class="dark:text-dark-text-100 text-xs mb-5">
+                        如果註冊，即表示你同意服務條款和隱私政策，包括 Cookie
+                        使用政策。
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <!-- 已經有帳戶了嗎 -->
+            <div class="flex flex-col mt-10">
+                <div class="dark:text-white mb-5">已經有帳戶了嗎？</div>
+                <div class="mb-2">
+                    <div
+                        :class="defaultTransition"
+                        class="flex items-center justify-center rounded-full dark:border dark:border-dark-300 dark:bg-opacity-0 w-[300px] h-[40px] cursor-pointer dark:text-dim-500 dark:hover:bg-dim-50/10"
+                    >
+                        登入
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

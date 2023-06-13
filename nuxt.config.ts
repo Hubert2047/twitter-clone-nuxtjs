@@ -8,4 +8,8 @@ export default defineNuxtConfig({
             autoprefixer: {},
         },
     },
+    runtimeConfig: {
+        jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET_KEY,
+        jwtRefeshSecret: process.env.JWT_REFRESH_TOKEN_SECRET_KEY,
+    },
 })

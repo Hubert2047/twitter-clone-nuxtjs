@@ -1,8 +1,5 @@
-<script setup>
-const darkMode = ref(true)
-const changeTheme = () => {
-    darkMode.value = !darkMode.value
-}
+<script lang="ts" setup>
+const darkMode = useDarkMode()
 </script>
 <template>
     <div :class="{ dark: darkMode }">
