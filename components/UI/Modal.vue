@@ -12,7 +12,7 @@ const { defaultTransition } = useAppConfig()
 <template>
     <div
         v-show="props.show"
-        class="fixed flex dark:bg-dim-900/30 min-w-[95vw] inset-0 items-center justify-center"
+        class="fixed flex dark:bg-dim-900/30 min-w-[95vw] inset-0 items-center justify-center z-30"
         :class="defaultTransition"
     >
         <div class="flex flex-col dark:bg-dim-700 p-6 rounded-xl">

@@ -29,7 +29,6 @@ const leftLoginTabs: leftTab[] = [
 //     { id: 8, title: 'Setting', component: Cog6ToothIcon },
 // ]
 const currentTabActive = ref<number>(1)
-// const currentUser = useCurrentUser()
 </script>
 <template>
     <div class="flex flex-col h-screen gap-2">
@@ -43,10 +42,7 @@ const currentTabActive = ref<number>(1)
                 </div>
             </nuxt-link>
         </div>
-        <SidebarLeftTab
-            v-for="leftTab in leftLoginTabs"
-            :active="currentTabActive === leftTab.id"
-        >
+        <SidebarLeftTab v-for="leftTab in leftLoginTabs" :active="currentTabActive === leftTab.id">
             <template v-slot:icon>
                 <component :is="leftTab.component" />
             </template>

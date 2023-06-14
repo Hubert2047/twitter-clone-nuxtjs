@@ -2,20 +2,23 @@
 definePageMeta({
     layout: 'login',
 })
-type LoginInfo = {
-    userName: String
-    password: String
-}
-const isShowModal = ref<boolean>(false)
-const loginInfo = reactive<LoginInfo>({ userName: '', password: '' })
-function handleLogin() {
-    console.log(loginInfo.userName)
+const { login } = useAuth()
+const data = reactive({ userName: '', password: '', isShowModal: false, isLoading: false })
+async function handleLogin() {
+    try {
+        data.isLoading = true
+        await login(data.userName, data.password)
+        navigateTo('home')
+    } catch (error) {
+    } finally {
+        data.isLoading = false
+    }
 }
 function handleCloseModal() {
-    isShowModal.value = false
+    data.isShowModal = false
 }
 function handleShowLogin() {
-    isShowModal.value = true
+    data.isShowModal = true
 }
 </script>
 <template>
@@ -51,16 +54,16 @@ function handleShowLogin() {
                 </div>
             </div>
         </div>
-        <UIModal :show="isShowModal" @close-modal="handleCloseModal">
+        <UIModal :show="data.isShowModal" @close-modal="handleCloseModal">
             <template v-slot:header>Login</template>
             <template v-slot:body>
                 <div>
                     <div class="w-full mb-4">
-                        <UIInput v-model="loginInfo.userName" label="User Name" placeholder="@username" />
+                        <UIInput v-model="data.userName" label="User Name" placeholder="@username" />
                     </div>
                     <div class="w-full">
                         <UIInput
-                            v-model="loginInfo.password"
+                            v-model="data.password"
                             label="Password"
                             placeholder="@password"
                             @keyup.enter="handleLogin"
@@ -75,5 +78,6 @@ function handleShowLogin() {
                 </div>
             </template>
         </UIModal>
+        <LoadingSpinner :show="data.isLoading" />
     </div>
 </template>
